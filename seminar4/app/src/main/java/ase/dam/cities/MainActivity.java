@@ -1,13 +1,11 @@
 package ase.dam.cities;
 
 import android.app.Activity;
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -23,10 +23,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ase.dam.cities.data.City;
-import ase.dam.cities.ui.AddCityActivity;
 import ase.dam.cities.ui.CitiesFragment;
 
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static Integer ADD_CITY_CODE = 100;
 
     private DrawerLayout drawerLayout;
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -38,12 +40,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         configNavigation();
-        findViewById(R.id.fab).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivityForResult(new Intent(MainActivity.this, AddCityActivity.class), ADD_CITY_REQUEST_CODE);
-            }
-        });
+
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        changeFragment(new CitiesFragment());
     }
 
     private void configNavigation() {
@@ -64,8 +65,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         R.string.navigation_drawer_close);
         //atasare eveniment
         drawerLayout.addDrawerListener(actionBar);
-        NavigationView navigationView = findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+//        navigationView.setNavigationItemSelectedListener(this);
         //sincronizare actionBartoggle
         actionBar.syncState();
 
@@ -112,7 +113,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Log.v(TAG, "onDestroy");
     }
 
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
@@ -121,10 +121,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
             }
             case R.id.nav_remote: {
-
+                Toast.makeText(MainActivity.this, "Remote pressed", Toast.LENGTH_SHORT).show();
+                break;
             }
             case R.id.nav_about: {
-
+                Toast.makeText(MainActivity.this, "About pressed", Toast.LENGTH_SHORT).show();
+                break;
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -132,9 +134,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void changeFragment(Fragment fragment) {
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.nav_host_fragment, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment, fragment);
+        fragmentTransaction.commit();
     }
 }

@@ -2,6 +2,7 @@ package ase.dam.cities.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -84,9 +85,10 @@ public class AddCityActivity extends AppCompatActivity {
                     currentCity.setName(etCityName.getText().toString());
                     currentCity.setCountry(etCountry.getText().toString());
                     currentCity.setRegion(String.valueOf(spRegion.getSelectedItem()));
+
                     Intent intent = new Intent();
                     intent.putExtra("city", currentCity);
-                    setResult(RESULT_OK, intent);
+                    setResult(Activity.RESULT_OK, intent);
                     finish();
                 }
             }

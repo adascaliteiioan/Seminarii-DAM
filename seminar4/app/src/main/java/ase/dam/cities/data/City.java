@@ -39,19 +39,6 @@ public class City implements Parcelable {
         }
     };
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(name);
-        parcel.writeString(country);
-        parcel.writeString(region);
-        parcel.writeString(time);
-    }
-
     public String getName() {
         return name;
     }
@@ -84,4 +71,16 @@ public class City implements Parcelable {
         this.time = time;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(name);
+        parcel.writeString(country);
+        parcel.writeString(region);
+        parcel.writeString(time);
+    }
 }
