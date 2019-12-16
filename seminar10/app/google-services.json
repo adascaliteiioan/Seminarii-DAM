@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "296072748239",
+    "firebase_url": "https://seminardam-2019.firebaseio.com",
+    "project_id": "seminardam-2019",
+    "storage_bucket": "seminardam-2019.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:296072748239:android:ffb012cd054fd1c4b7ebba",
+        "android_client_info": {
+          "package_name": "com.ai.seminar10"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "296072748239-64173i8rp8bei00420js7t65s2u6ra0i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ai.seminar10",
+            "certificate_hash": "eca3378d5d7ab39302b3c3034405ceadcadd9e94"
+          }
+        },
+        {
+          "client_id": "296072748239-rqepv9b25114q031gdngtjq26or3j2ka.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuFzNRogDzBVGTjEnKZ4x5F2hFDHAMSIY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "296072748239-rqepv9b25114q031gdngtjq26or3j2ka.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
